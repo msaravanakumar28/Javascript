@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5e8ba;
+        }
+
+        #wrapper h2 {
+            display: flex;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #ffeba7;
+            letter-spacing: 1px;
+        }
+
+        input {
+            border-radius: 5px;
+            border: 2px solid black;
+            margin-top: 30px;
+            height: 2.5em;
+            width: 250px;
+            padding-left: 10px;
+        }
+
+        input:active {
+            border: none;
+        }
+
+        #wrapper {
+            height: 500px;
+            width: 400px;
+            margin: 200px auto;
+            background-color: #1f2029;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #ffeba7;
+            border-radius: 4px;
+            height: 44px;
+            font-weight: 600;
+            padding: 0 30px;
+            letter-spacing: 1px;
+            border: none;
+            color: #102770;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        #todoList {
+            color: white;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        #todoList p {
+            margin: 10px 0px;
+        }
+
+        #todoList p:hover {
+            cursor: pointer;
+        }
+    </style>
+    <title>ToDo List</title>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>Todo List</h2>
+        <input type="text" id="input">
+        <button id="add">Add</button>
+        <div id="todoList">
+        </div>
+    </div>
+    <script>
+      /*  let btn = document.getElementById('add');
+        let input = document.getElementById('input');
+        let todolist = document.getElementById('todoList');
+
+        let arr = [];
+
+        window.onload = () => {
+            arr = JSON.parse(localStorage.getItem('todokey')) || [];
+            arr.forEach(element => addelement(element));
+        }
+
+        btn.addEventListener('click', () => {
+            if (input.value.trim() !== '') {
+                arr.push(input.value);
+                localStorage.setItem('todokey', JSON.stringify(arr));
+                addelement(input.value);
+                input.value = '';
+            }
+        });
+
+        function addelement(element) {
+            let para = document.createElement('p');
+            para.innerHTML = element;
+            todolist.appendChild(para);
+
+            para.addEventListener('click', () => {
+                para.style.textDecoration = 'line-through';
+            });
+
+            para.addEventListener('dblclick', () => {
+                todolist.removeChild(para);
+                remove(element);
+            });
+        }
+
+        function remove(element) {
+            let index = arr.indexOf(element);
+            if (index > -1) {
+                arr.splice(index, 1);
+            }
+            localStorage.setItem('todokey', JSON.stringify(arr));
+        }*/
+
+         let btn = document.getElementById('add');
+            let input = document.getElementById('input');
+            let todolist = document.getElementById('todoList');
+
+            let arr = [];
+
+            window.onload = () => {
+                arr = JSON.parse(localStorage.getItem('todokey')) || [];
+                arr.forEach(element => addelement(element));
+            }
+
+            btn.addEventListener('click', () => {
+                if (input.value.trim() !== '') {
+                    arr.push(input.value);
+                    localStorage.setItem('todokey', JSON.stringify(arr));
+                    addelement(input.value);
+                    input.value = '';
+                }
+            });
+
+            function addelement(element) {
+                let para = document.createElement('p');
+                para.innerHTML = element;
+                todolist.appendChild(para);
+
+                para.addEventListener('click', () => {
+                    para.style.textDecoration = 'line-through';
+                });
+
+                para.addEventListener('dblclick', () => {
+                    todolist.removeChild(para);
+                    remove(element);
+                });
+            }
+
+            function remove(element) {
+                let index = arr.indexOf(element);
+                if (index > -1) {
+                    arr.splice(index, 1);
+                }
+                localStorage.setItem('todokey', JSON.stringify(arr));
+            }
+
+
+            
+    </script>
+</body>
+
+</html>
+
+/*same program in Jquery
+
+/*same program in Jquery
+            
+            
+            
+
+            /*
+            <!DOCTYPE html>
+            <html lang="en">
+            
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                    html,
+                    body {
+                        margin: 0;
+                        font-family: 'Poppins', sans-serif;
+                        background-color: #f5e8ba;
+                    }
+            
+                    #wrapper h2 {
+                        display: flex;
+                        justify-content: center;
+                    }
+            
+                    h2 {
+                        color: #ffeba7;
+                        letter-spacing: 1px;
+                    }
+            
+                    input {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        margin-top: 30px;
+                        height: 2.5em;
+                        width: 250px;
+                        padding-left: 10px;
+                    }
+            
+                    input:active {
+                        border: none;
+                    }
+            
+                    #wrapper {
+                        height: 500px;
+                        width: 400px;
+                        margin: 200px auto;
+                        background-color: #1f2029;
+                        border-radius: 10px;
+                        padding: 30px;
+                    }
+            
+                    button {
+                        margin-top: 20px;
+                        background-color: #ffeba7;
+                        border-radius: 4px;
+                        height: 44px;
+                        font-weight: 600;
+                        padding: 0 30px;
+                        letter-spacing: 1px;
+                        border: none;
+                        color: #102770;
+                    }
+            
+                    button:hover {
+                        cursor: pointer;
+                    }
+            
+                    #todoList {
+                        color: white;
+                        font-size: 28px;
+                        margin-top: 10px;
+                    }
+            
+                    #todoList p {
+                        margin: 10px 0px;
+                    }
+            
+                    #todoList p:hover {
+                        cursor: pointer;
+                    }
+                </style>
+                <title>ToDo List</title>
+            
+            </head>
+            
+            <body>
+                <div id="wrapper">
+                    <h2>Todo List</h2>
+                    <input type="text" id="input">
+                    <button id="add">Add</button>
+                    <div id="todoList">
+                    </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        let arr = JSON.parse(localStorage.getItem('todokey')) || [];
+                        arr.forEach(function (element) {
+                            addelement(element);
+                        });
+
+                        $('#add').click(function () {
+                            let value = $('#input').val().trim();
+                            if (value !== '') {
+                                arr.push(value);
+                                localStorage.setItem('todokey', JSON.stringify(arr));
+                                addelement(value);
+                                $('#input').val('');
+                            }
+                        });
+
+                        function addelement(element) {
+                            let para = $('<p></p>').text(element);
+                            $('#todoList').append(para);
+
+                            para.click(function () {
+                                $(this).css('text-decoration', 'line-through');
+                            });
+
+                            para.dblclick(function () {
+                                $(this).remove();
+                                remove(element);
+                            });
+                        }
+
+                        function remove(element) {
+                            let index = arr.indexOf(element);
+                            if (index > -1) {
+                                arr.splice(index, 1);
+                            }
+                            localStorage.setItem('todokey', JSON.stringify(arr));
+                        }
+                    });
+
+                    /*same program in javascript alone*/
+                    /*let btn = document.getElementById('add');
+    let input = document.getElementById('input');
+    let todolist = document.getElementById('todoList');
+    let arr = [];
+    
+    window.onload = () => {
+    arr = JSON.parse(localStorage.getItem('todokey')) || [];
+    arr.forEach(element => addelement(element));
+    }
+    
+    btn.addEventListener('click', () => {
+    if (input.value.trim() !== '') {
+    arr.push(input.value);
+    localStorage.setItem('todokey', JSON.stringify(arr));
+    addelement(input.value);
+    input.value = '';
+    }
+    });
+    
+    function addelement(element) {
+    let para = document.createElement('p');
+    para.innerHTML = element;
+    todolist.appendChild(para);
+    
+    para.addEventListener('click', () => {
+    para.style.textDecoration = 'line-through';
+    });
+    
+    para.addEventListener('dblclick', () => {
+    todolist.removeChild(para);
+    remove(element);
+    });
+    }
+    
+    function remove(element) {
+    let index = arr.indexOf(element);
+    if (index > -1) {
+    arr.splice(index, 1);
+    }
+    localStorage.setItem('todokey', JSON.stringify(arr));
+    }*/
+                </script>
+            </body>
+            
+            </html>
+
+
