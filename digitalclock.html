@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="wrapper">
+        <span id="hr">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+        <span id="ampm">AM</span>
+        </div>
+    </div>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(25,180,212,1) 33%, rgba(241,255,0,1) 94%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            font-size: 5rem;            
+        }
+
+        #wrapper {
+            border: 3px white solid;
+            padding: 1rem;
+        }
+        #ampm{
+            font-size: 2rem;
+            
+        }
+        </style>
+        <script>
+
+          /*  let ampm =document.getElementById('ampm');
+            function display(){
+
+            let dateTime = new Date();
+            let hr = dateTime.getHours();
+            let min = padZero(dateTime.getMinutes());
+            let sec= padZero(dateTime.getSeconds());            
+             
+            if (hr > 12){
+                hr = hr-12;
+                ampm.innerHTML = 'PM';
+            }
+
+            document.getElementById('hr').innerHTML = padZero(hr);
+            document.getElementById('min').innerHTML = min ;
+            document.getElementById('sec').innerHTML = sec ;
+            }
+            function padZero(num){
+                if (num <10){
+                num  = "0"+num;
+                return num;
+                }
+                else 
+                return num;
+
+
+            }
+            
+            setInterval(display, 500);*/
+
+          // same program in jquery
+                function display() {
+
+                    let dateTime = new Date();
+                    let hr = dateTime.getHours();
+                    let min = padZero(dateTime.getMinutes());
+                    let sec = padZero(dateTime.getSeconds());
+
+                    if (hr > 12) {
+                        hr = hr - 12;
+                        $('#ampm').html('PM')                    }
+
+                   $('#hr').html(padZero(hr));
+                    $('#min').html(min);
+                    $('#sec').html(sec);
+                }
+                function padZero(num) {
+                    if (num < 10) {
+                        num = "0" + num;
+                        return num;
+                    }
+                    else
+                        return num;
+
+
+                }
+
+                setInterval(display, 500);
+
+
+           
+
+        </script>
+
+</body>
+</html>
