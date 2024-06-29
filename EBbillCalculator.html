@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>EB Bill calculator</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>EB BILL Calculator</h2>
+        <div class="inputdiv">
+            <input type="text" id="input" placeholder="Enter units">
+        </div>
+        <div>
+            <button type="submit" onclick="eb1()">ENTER</button>
+     
+
+        </div>
+    </div>
+    <script>
+      /*  let resd = document.createElement('div');
+            resd.id = 'result';
+            document.getElementById('wrapper').appendChild(resd);
+
+        function eb1() {
+            let rate =0;
+            let et = Number(document.getElementById("input").value);
+            if (et<=50)
+            rate= 50*0.75;
+            else if (et>50 && et <=150)
+            rate = 37.5+ (et-50)*1;
+            else if(et > 150 && et <= 250)
+            rate = 137.5 + (et - 150) * 1.30;
+            else if (et > 250)
+            rate = 267.5 + (et  * 1.30);
+        
+           let result = document.getElementById("result");
+            result.innerHTML = rate;
+
+
+
+           
+        }*/
+     
+            $('#wrapper').append($('<div></div>').attr('id', 'result'));
+
+            function eb1() {
+                let rate = 0;
+                let et = Number($("#input").val());
+                if (et <= 50)
+                    rate = 50 * 0.75;
+                else if (et > 50 && et <= 150)
+                    rate = 37.5 + (et - 50) * 1;
+                else if (et > 150 && et <= 250)
+                    rate = 137.5 + (et - 150) * 1.30;
+                else if (et > 250)
+                    rate = 267.5 + (et * 1.30);
+
+               $("#result").html(rate)
+               
+
+
+
+
+            }
+
+    </script>
+</body>
+
+</html>
