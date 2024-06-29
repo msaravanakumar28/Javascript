@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="input" id="in" placeholder="enter value">
+    <button type="button" onclick="call1()">Submit</button> <!-- Specify type="button" -->
+    <div id="result"></div>
+    <script>
+        function call1() {
+
+            let vari = document.querySelector('#in').value;
+            let vari2 = vari.split(' ');
+            let x = vari2[0];
+            let y = vari2[1];
+            let z = vari2[2];
+
+            x1 = Number(x);
+            y1 = Number(y);
+            let res = 0;
+
+            switch (z) {
+
+                case '+': // Compare against strings
+                    res = x1 + y1;
+                    break;
+                case '-':
+                    res = x1 - y1;
+                    break;
+                case '*':
+                    res = x1 * y1;
+                    break;
+                case '/':
+                    res = x1 / y1;
+                    break;
+
+            }
+            document.querySelector('#result').innerHTML = `${res}`; // Correct the typo
+        }
+    </script>
+</body>
+
+</html>
