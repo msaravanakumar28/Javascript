@@ -144,11 +144,11 @@
                 document.getElementById('humidity').textContent = `${weatherData.main.humidity}%`;
                 document.getElementById('pressure').textContent = `${weatherData.main.pressure} hPa`;
 
-                // Clear previous error message, if any
+               
                 document.getElementById('error').textContent = '';
 
             } catch (error) {
-                // Display error message
+               
                 document.getElementById('error').textContent = 'Error fetching data. Please try again.';
             }
         });
