@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App ⛈️🌈⚡</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            
+            background-image: url("https://wallpapers.com/images/hd/weather-scenarios-collage-dbk9c5n23l7e5fgb.jpg");
+        }
+
+        .container {
+            width: fit-content;
+            border: solid white 10px;
+            margin: 200px auto;
+            padding: 20px;
+            border-radius: 20px;
+            background-image: url("https://wallpaperswide.com/download/my_favorite_weather-wallpaper-2560x1440.jpg");
+        }
+
+        #textbox {
+            border-radius: 15px;
+            padding: 10px;
+            outline: 0;
+            border-color: white;
+            letter-spacing: 2px;
+            
+        }
+
+        #otherdata {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #button {
+            border-radius: 15px;
+            padding: 10px;
+            outline: 0;
+            border-color: white;
+        }
+
+        #temperature {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Corrected ID names and added specific styling for each box */
+        #windSpeedBox,
+        #sunRiseBox,
+        #sunSetBox,
+        #humidityBox,
+        #pressureBox
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            margin-right: 10px;
+            border: solid 1px black;
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+           
+        }
+        #temperature{
+        border: solid 1px black;
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+
+        }
+
+        #error {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+        }
+        .form{
+        display: flex;        
+        justify-content: center;
+        align-items: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <div class="form">
+        <input type="text" id="textbox" placeholder="Enter City Name" spellcheck="false">
+        <button type="submit" id="button">🔍</button>
+        <div id="error"></div>
+        </div>
+        <h1 id="temperature">0°C⛅</h1>
+        <h2 id="cityname"></h2>
+        <div id="otherdata">
+            <div id="windSpeedBox">
+                <h6>Wind Speed🍃</h6>
+                <h6 id="windspeed">0.00 m/s</h6>
+            </div>
+            <div id="sunRiseBox">
+                <h6>Sunrise🌅</h6>
+                <h6 id="sunrise">00:00 AM</h6>
+            </div>
+            <div id="sunSetBox">
+                <h6>Sunset🌇</h6>
+                <h6 id="sunset">00:00 PM</h6>
+            </div>
+            <div id="humidityBox">
+                <h6>Humidity💧</h6>
+                <h6 id="humidity">00%</h6>
+            </div>
+            <div id="pressureBox">
+                <h6>Pressure🍃</h6>
+                <h6 id="pressure">0 hPa</h6>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const button = document.getElementById('button');
+
+        button.addEventListener('click', async () => {
+            const cityname1 = document.getElementById('textbox').value.trim();
+            const cityname = cityname1.toUpperCase();
+
+            try {
+                let weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=69e673f15402d02b2342902a48043139&units=metric`);
+                let weatherData = await weather.json();
+
+                document.getElementById('temperature').textContent = `${cityname} - ${weatherData.main.temp}°C⛅`;
+                document.getElementById('windspeed').textContent = `${weatherData.wind.speed} m/s`;
+                document.getElementById('sunrise').textContent = `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                document.getElementById('sunset').textContent = `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                document.getElementById('humidity').textContent = `${weatherData.main.humidity}%`;
+                document.getElementById('pressure').textContent = `${weatherData.main.pressure} hPa`;
+
+                // Clear previous error message, if any
+                document.getElementById('error').textContent = '';
+
+            } catch (error) {
+                // Display error message
+                document.getElementById('error').textContent = 'Error fetching data. Please try again.';
+            }
+        });
+    </script>
+</body>
+
+</html>
