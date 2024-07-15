@@ -36,7 +36,7 @@ sort() used to soring the items alpabetically // in this comment it sorts the na
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-db.users.find()..sort({afe : 1, name : 1 }).limit(2)
+db.users.find()..sort({age : 1, name : 1 }).limit(2)
 
 same as above but here we also add age
 
