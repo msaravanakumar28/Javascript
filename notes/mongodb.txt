@@ -1,0 +1,235 @@
+use [databas neme] - create DB / switched to that DB
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+show dbs - list available daabase
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.insertOne ({key : "value",{key : "value"}, ........) . insert values with one object
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find() - list the elements in database
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+db.users.insertMany([{key : "value",{key : "value"}, ........, {key : "value",{key : "value"}, ........ ,{key : "value",{key : 
+
+"value"}, ........,........]) ---- insert data with multiple objects
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find().limit(2)
+
+display number of data we want in the order we enter // in this case it display first two data
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find()..sort({name : 1 }).limit(2)
+
+sort() used to soring the items alpabetically // in this comment it sorts the name alpabeticallt 1 is for a-z and -1 for z to a
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find()..sort({afe : 1, name : 1 }).limit(2)
+
+same as above but here we also add age
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find().skip(1).limit(2)
+
+It will skip the first data and then display the next  2 data taht is 2 and 3
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find({name : saravanakumar})
+
+displays data which contains name :saravanakumar
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find({name : saravanakumar}, {name : 1,age :1})
+
+will display the data with the name saravanakumar with the fields specified only // displays name and age only in result
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find({name : saravanakumar}, {name : 1,age :1, _id:0})
+
+wont display the id
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({name : saravanakumar}, {age :0})
+
+displays all data except age
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({name :{$eq: "saravanakumar"}) // equal to
+
+same as  ---> db.users.find({name : saravanakumar})
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({name :{$ne: "saravanakumar"}) not equal to
+
+same as  ---> will display all data which not matching saravanakumar
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find({age :{$gt: 29})  ===> greater than
+
+db.users.find({age :{$gte: 29})  ===> greater than or equal to
+
+db.users.find({age :{$lt: 29})  ===> less than
+
+db.users.find({age :{$lte: 29})  ===> less than or equal to
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({name :{$in: ["saravanakumar", "sam"]}) // note should be in array format
+
+in is used to find multiple data
+
+
+db.users.find({name :{$nin: ["saravanakumar", "sam"]})  same but not in
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({age {exists : true }})  // displays data who has the filed of  age
+
+db.users.find({age {exists : false }}) / displays data who doesnt has the filed of  age
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+db.users.find({age :{$gte: 20 , $lte : 40}}) 
+
+displays in between data
+
+
+
+db.users.find({age :{$gte: 20 , $lte : 40}, name "saravanakumar"})  will display filtered data again with the name filter ==> for and operation we dont need to specify and  we can slo do without specify
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find({$and: [{age : 20 , $lte : 40}, {name "saravanakumar"}]})  dong && operation
+
+db.users.find({$or[{age : 20 , $lte : 40}, {name "saravanakumar"}]})   dong || operation
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.find({age : {$not : {$lte :20}}})
+
+not operator
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+db.users.find({expr: {$gt: ["debt","balance"]}})
+
+it will returns data where debt is freater than balance
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+db.users.find({"address.city": "sivakasi"}
+
+we can use .operator to find inside properties
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.findOne({"address.city": "sivakasi"}
+
+will delivered only the first result of all matching result
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.find.countDocuments({"address.city": "sivakasi"}
+
+will return the number of documents match
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+db.users.updateOne({age:24},{$set: {age:30}}) ==>
+db.users.updateOne({_id:id number},{$set: {age:30}}) ==>
+
+
+update the fields
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateOne({age:24},{$inc: {age:3}}) ==>
+
+update/increment age by 3
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateOne({age:24},{$rename: {age:personAge}}) ==> will rename age field to person age
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateOne({age:24},{$push: {hobbies:"cricket"}}) ==> will add values to the array object
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateOne({age:24},{$pull: {hobbies:"cricket"}}) ==> will remove values to the array object
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateOne({_id:idnumber},{$unset: {age:""}}) ==>
+
+will remove that field
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.updateMany{address: {exists : true}, {$unset: {address:""}}})
+
+will update many fields
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users. replaceOne({age:20},{name:"saravanan"})
+
+will repalce age field with name field
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.users.deleteOne({age:20})
+
+delete one filed
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+db.users.deleteMany({age:{$exists: false}})
+
+delete many field
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+show collections
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+db.dropDataBase()
+
+delete database
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+cls
+
+exit
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
