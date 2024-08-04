@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         html,
-body {
+body 
+{
     font-family: 'Poppins', sans-serif;
     background-color: #f5e8ba;
     margin: 0;
@@ -15,37 +17,43 @@ body {
     box-sizing: border-box;
 }
 
-body {
+body 
+{
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container {
+.container 
+{
     background-color: #1f2029;
     padding: 10px 24px;
     border-radius: 20px;
     width: 490px;
 }
 
-h1 {
+h1 
+{
     color: #ffeba7;
     text-align: center;
     margin-bottom: 0.5em;
     font-family: sans-serif;
 }
 
-.container .box {
+.container .box 
+{
     width: 100%;
     display: flex;
 }
 
-.box div {
+.box div 
+{
     width: 100%;
 }
 
-select {
+select 
+{
     width: 95%;
     height: 40px;
     font-size: 1.2em;
@@ -60,7 +68,8 @@ select {
 }
 
 
-input {
+input 
+{
     width: 80%;
     height: 40px;
     font-size: 1em;
@@ -72,12 +81,14 @@ input {
     padding: 0 1em;
 }
 
-.btn {
+.btn 
+{
     display: flex;
     justify-content: center;
 }
 
-button {
+button 
+{
     width: 50%;
     height: 40px;
     background-color: #ffeba7;
@@ -95,24 +106,19 @@ button {
 </head>
 
 <body>
-    <div class="container">
-        <h1>Currency Convertor</h1>
-        <div class="box">
-            <div class="left-box">
-                <select name="currency" class="currency">
 
-                </select>
-                <input type="number" name="" id="input">
-            </div>
-            <div class="right-box">
-                <select name="currency" class="currency"></select>
-                <input type="number" name="" id="result">
-            </div>
-        </div>
-       
+    <select name="select" id="sel"></select>
+    <script>
 
-    </div>
-    <script src="app.js"></script>
+         let names = ['hello', 'apple'];
+            for (i = 0;i <names.length;i++)
+            {
+              
+                let a = $('<option></option>').val(names[i]).text(names[i])
+                $('#sel').append(a)
+            }
+    </script>
+     
 </body>
 
 </html>
